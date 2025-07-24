@@ -1,0 +1,22 @@
+{
+  "name": "crypto-benchmark",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "bench": "node ./benchmark.js",
+    "build:rust": "wasm-pack build ./src-rust --release --target nodejs --out-dir ../pkg/rust",
+    "build:zig": "zig build-exe src-zig/lib.zig -target wasm32-freestanding -O ReleaseSmall -fno-entry --export-memory --export=get_buffer_ptr --export=zig_xed25519_create_keypair --export=zig_xed25519_sign --export=zig_xed25519_verify -femit-bin=./pkg/zig/benchmark.wasm",
+    "build": "npm run build:zig && npm run build:rust"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@noble/curves": "^1.9.4",
+    "@noble/ed25519": "^2.3.0",
+    "libsodium": "^0.7.15",
+    "mitata": "^1.0.34"
+  }
+}
