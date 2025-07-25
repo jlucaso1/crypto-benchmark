@@ -11,15 +11,13 @@ export fn get_buffer_ptr() [*]u8 {
 }
 
 export fn zig_xed25519_create_keypair_ptr(seed_ptr: [*]const u8, keypair_out_ptr: [*]u8) void {
-    const seed_slice = seed_ptr[0..32];
-    var seed: [32]u8 = undefined;
-    mem.copyForwards(u8, seed[0..], seed_slice);
+    const seed: *const [32]u8 = @ptrCast(seed_ptr);
 
-    const public_key = X25519.recoverPublicKey(seed) catch |err| {
+    const public_key = X25519.recoverPublicKey(seed.*) catch |err| {
         @panic(@errorName(err));
     };
 
-    mem.copyForwards(u8, keypair_out_ptr[0..32], &seed);
+    mem.copyForwards(u8, keypair_out_ptr[0..32], seed[0..]);
     mem.copyForwards(u8, keypair_out_ptr[32..64], &public_key);
 }
 
