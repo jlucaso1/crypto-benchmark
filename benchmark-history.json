@@ -1,0 +1,1426 @@
+[
+  {
+    "commit": {
+      "hash": "7d9bbae",
+      "message": "Fix path for copying visualization files in benchmarks workflow",
+      "date": "2025-07-25T02:10:19.461Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 234896.7629005072,
+        "min": 199305,
+        "max": 938643
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 416882.9397374702,
+        "min": 387829,
+        "max": 959453
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 157755.0029233191,
+        "min": 149261,
+        "max": 515829
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 54224.697201216186,
+        "min": 50666,
+        "max": 961435
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 122820.2641075535,
+        "min": 117110,
+        "max": 410211
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 162971.9614132988,
+        "min": 159139,
+        "max": 267923
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 49310.44643117723,
+        "min": 42941,
+        "max": 1686836.9999990463
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40729.06797281901,
+        "min": 39437.79052734375,
+        "max": 44288.201904296875
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 117172.1609393887,
+        "min": 92163,
+        "max": 2685974
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 90061.41024956627,
+        "min": 68919,
+        "max": 1271878
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 464540.0812417437,
+        "min": 328909,
+        "max": 682932
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1086139.698757764,
+        "min": 1064421,
+        "max": 1436400
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 727064.2357807653,
+        "min": 707706,
+        "max": 868352
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 141074.49536560246,
+        "min": 128000,
+        "max": 7869842
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 51851.32344563786,
+        "min": 51133.58203125,
+        "max": 56811.6181640625
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "64e219e",
+      "message": "Remove file headers from workflow and script files",
+      "date": "2025-07-25T02:13:41.829Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 237445.5015363581,
+        "min": 197048.99999904633,
+        "max": 1035911
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 421305.19405700424,
+        "min": 392386,
+        "max": 2123370
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 152543.4843137255,
+        "min": 143959,
+        "max": 654116
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 53556.505774561134,
+        "min": 50735,
+        "max": 1098037
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 121006.82850157178,
+        "min": 116879,
+        "max": 398296
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 162019.50184842708,
+        "min": 157305,
+        "max": 275136
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45596.18218130688,
+        "min": 42599,
+        "max": 1640535.0000009537
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40242.9015037594,
+        "min": 38301,
+        "max": 149982
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 106090.64121779859,
+        "min": 82044,
+        "max": 1951586
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 76770.82502543235,
+        "min": 64771,
+        "max": 1055879
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 454288.86571981927,
+        "min": 300132,
+        "max": 599484
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1086948.6387596899,
+        "min": 1069224,
+        "max": 1385698
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 706038.891566265,
+        "min": 660217,
+        "max": 743133
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 141060.96778190832,
+        "min": 127870,
+        "max": 9458518
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 52638.42640741578,
+        "min": 50745,
+        "max": 159919
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "ada35c6",
+      "message": "Refactor update-readme.js to use ES module imports",
+      "date": "2025-07-25T02:16:49.764Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 233194.50736278496,
+        "min": 202297,
+        "max": 912808
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 420317.68671076366,
+        "min": 391638,
+        "max": 997386
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 151671.3165872672,
+        "min": 140241,
+        "max": 595818
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 54278.41094822208,
+        "min": 50745,
+        "max": 1061535
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 123566.9046175789,
+        "min": 117068,
+        "max": 419630
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 178869.14336643482,
+        "min": 161059,
+        "max": 313964
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 47919.69006518246,
+        "min": 42780,
+        "max": 1812060.9999990463
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 39990.73277601614,
+        "min": 38712,
+        "max": 140021
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 103001.12505609574,
+        "min": 81051,
+        "max": 1712877
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 77501.21201372998,
+        "min": 65111,
+        "max": 2691887
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 456735.3268356075,
+        "min": 298947,
+        "max": 850963
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1089179.6878881988,
+        "min": 1025137,
+        "max": 1392490
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 731972.1916666667,
+        "min": 708558,
+        "max": 862294
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 141467.06990250986,
+        "min": 128399,
+        "max": 9638300
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 52178.22145845786,
+        "min": 50845,
+        "max": 180496
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "e04026d",
+      "message": "Merge branch 'master' of https://github.com/jlucaso1/crypto-benchmark",
+      "date": "2025-07-25T02:34:47.168Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 232112.7159053059,
+        "min": 201919,
+        "max": 1122108
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 427304.0869565217,
+        "min": 392397,
+        "max": 1255075
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 155007.89329200797,
+        "min": 144211,
+        "max": 674507
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 55613.53814135916,
+        "min": 51356,
+        "max": 498476
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 166284.81820365033,
+        "min": 157997,
+        "max": 353343
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 166532.95071089844,
+        "min": 159881,
+        "max": 357712
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 48134.16191221537,
+        "min": 42520,
+        "max": 3585504
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40275.5086551265,
+        "min": 38433,
+        "max": 124694
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 102035.77930932266,
+        "min": 83667,
+        "max": 1913639
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 83289.54192203972,
+        "min": 66976,
+        "max": 1420692
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 451854.35773924214,
+        "min": 338667,
+        "max": 605670
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1083643.226851852,
+        "min": 1064600,
+        "max": 1207571
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 709981.9393939395,
+        "min": 535366,
+        "max": 888038
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 142124.8943207822,
+        "min": 128201,
+        "max": 9344271
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 52621.162438840794,
+        "min": 50414,
+        "max": 146866
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "e31e524",
+      "message": "Clean up benchmark workflow comments and script steps",
+      "date": "2025-07-25T02:40:46.177Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 232234.4878292817,
+        "min": 197812.99999952316,
+        "max": 952309
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 427609.5890998163,
+        "min": 384336,
+        "max": 1270179
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 153005.39845984598,
+        "min": 143731,
+        "max": 1568273
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 53412.70515574651,
+        "min": 50766,
+        "max": 383955
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 120926.13595956075,
+        "min": 116821,
+        "max": 370851
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 163590.4117509909,
+        "min": 160092,
+        "max": 290469
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45456.46732156878,
+        "min": 42199,
+        "max": 1452483.9999990463
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 41649.055681954254,
+        "min": 38282,
+        "max": 158950
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 99585.14707171023,
+        "min": 81073,
+        "max": 1544649
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 81676.9140625,
+        "min": 65353,
+        "max": 1748446
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 457875.8854912167,
+        "min": 299244,
+        "max": 584323
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1083198.972179289,
+        "min": 1058237,
+        "max": 1400132
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 720465.2543589744,
+        "min": 701714,
+        "max": 873168
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 140687.10026820714,
+        "min": 128423,
+        "max": 8818289
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 51721.77959334566,
+        "min": 50375,
+        "max": 140946
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "eb29435",
+      "message": "Clarify and update comments in benchmarks workflow script",
+      "date": "2025-07-25T02:48:21.895Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 227753.85662611344,
+        "min": 200124,
+        "max": 741634
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 415771.239738251,
+        "min": 389327,
+        "max": 955955
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 153656.88764538075,
+        "min": 145021,
+        "max": 541570
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 53051.463670982484,
+        "min": 50664,
+        "max": 530320
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 161493.67410506742,
+        "min": 156793,
+        "max": 436144
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 162587.97277634224,
+        "min": 157934.99999904633,
+        "max": 312965
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 48780.59073303988,
+        "min": 42480,
+        "max": 2573675
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40420.34084310765,
+        "min": 38592,
+        "max": 116067
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 112521.19396127338,
+        "min": 90489,
+        "max": 2089010
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 87624.00273152966,
+        "min": 69510,
+        "max": 2788116
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 466193.7481776011,
+        "min": 313125,
+        "max": 611411
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1082243.788580247,
+        "min": 1064808,
+        "max": 1373966
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 729191.6099585062,
+        "min": 707911,
+        "max": 881977
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 141619.03698317058,
+        "min": 128510,
+        "max": 9391234
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 52862.18942031179,
+        "min": 50975,
+        "max": 143268
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "786d189",
+      "message": "Merge branch 'master' of https://github.com/jlucaso1/crypto-benchmark",
+      "date": "2025-07-25T03:13:26.823Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 231030.5493519348,
+        "min": 198193,
+        "max": 906483
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 412007.5067926757,
+        "min": 384262,
+        "max": 2024745
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 154231.66835164835,
+        "min": 146335,
+        "max": 423746
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 48599.440617577195,
+        "min": 45706,
+        "max": 390625
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 117611.34303499328,
+        "min": 108824,
+        "max": 354476
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 165396.32900943374,
+        "min": 161012,
+        "max": 278874
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45955.44407604844,
+        "min": 42390,
+        "max": 1427151
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40032.65674477517,
+        "min": 38583,
+        "max": 116128
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 102261.94551949984,
+        "min": 80461,
+        "max": 1365236
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 81071.45697187314,
+        "min": 64772,
+        "max": 3303285
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 455839.07582631236,
+        "min": 298652,
+        "max": 816454
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1081466.0493066255,
+        "min": 1052628,
+        "max": 1294904
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 715504.266802444,
+        "min": 691890,
+        "max": 798791
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 139650.0384065373,
+        "min": 127519,
+        "max": 8034660
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 52018.64595623926,
+        "min": 50405,
+        "max": 149481
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "9bcd99a",
+      "message": "Refactor libsodium benchmarks to xed25519",
+      "date": "2025-07-25T03:36:59.581Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 241832.84602016254,
+        "min": 197617,
+        "max": 1781716
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 441907.4946031746,
+        "min": 392110,
+        "max": 2740120
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 163916.49777881693,
+        "min": 144700,
+        "max": 466639
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 49362.43797486331,
+        "min": 46076,
+        "max": 341957
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 148633.1994483344,
+        "min": 143507,
+        "max": 396678
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 165659.55078953796,
+        "min": 160869,
+        "max": 274691
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45730.78624872973,
+        "min": 42449,
+        "max": 2876204
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40121.55635311143,
+        "min": 38492,
+        "max": 162873
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 100821.04841328414,
+        "min": 78947,
+        "max": 2154860
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 76494.50739628517,
+        "min": 62937,
+        "max": 2516433
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 454685.66386010364,
+        "min": 308904,
+        "max": 603083
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 1082865.1826625387,
+        "min": 1069841,
+        "max": 1229488
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 721437.2464065709,
+        "min": 692088,
+        "max": 874317
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 140070.15635245902,
+        "min": 128188,
+        "max": 7839470
+      },
+      {
+        "group": "libsodium-js",
+        "name": "verify",
+        "avg": 132146.92345307505,
+        "min": 128659,
+        "max": 268209
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 117184.51645231334,
+        "min": 115114,
+        "max": 198389
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "43e7241",
+      "message": "Optimize Zig build and inline sign/verify functions\n\n- Enable simd128 and ReleaseFast in Zig build - Add -fstrip to reduce\nWASM size - Mark sign and verify as inline in xed25519.zig",
+      "date": "2025-07-25T15:51:53.700Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 239231.8639642767,
+        "min": 200947,
+        "max": 1171763.9999995232
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 443476.874205845,
+        "min": 394609,
+        "max": 1802234
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 153239.30797977577,
+        "min": 141675,
+        "max": 1656400
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 51271.18237508303,
+        "min": 46066,
+        "max": 1037862
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 115811.5118554137,
+        "min": 109334,
+        "max": 429724
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 181256.46542827337,
+        "min": 160280,
+        "max": 359032
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 48188.290514402186,
+        "min": 43141,
+        "max": 4016026
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40090.2612778706,
+        "min": 38502,
+        "max": 181220
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 106676.77268460576,
+        "min": 82194,
+        "max": 2602300
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 83212.09044616878,
+        "min": 66365,
+        "max": 1041549
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 306798.1447884867,
+        "min": 281928,
+        "max": 499655
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 767770.1914660832,
+        "min": 709849,
+        "max": 1338746
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 537402.8593272171,
+        "min": 458868,
+        "max": 659605
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 142297.49832565928,
+        "min": 128591,
+        "max": 10003652
+      },
+      {
+        "group": "libsodium-js",
+        "name": "verify",
+        "avg": 130492.55576208179,
+        "min": 127299,
+        "max": 253474
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 117443.63646999832,
+        "min": 115426,
+        "max": 200866
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "cd259d0",
+      "message": "Merge branch 'master' of https://github.com/jlucaso1/crypto-benchmark",
+      "date": "2025-07-25T16:23:37.195Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 232326.03609626146,
+        "min": 197009,
+        "max": 1643522
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 429852.5363300493,
+        "min": 391733,
+        "max": 1015859
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 152025.86009124483,
+        "min": 139831,
+        "max": 434742
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 48418.38468506132,
+        "min": 45916,
+        "max": 426397
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 147675.58206751055,
+        "min": 144009,
+        "max": 391753
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 168635.5958263377,
+        "min": 162574,
+        "max": 282167
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45947.23656569725,
+        "min": 42449,
+        "max": 1537260.9999990463
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 39900.023386772395,
+        "min": 38382,
+        "max": 130775
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 105121.70818070818,
+        "min": 77926,
+        "max": 1374038
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 80958.8004484305,
+        "min": 65282,
+        "max": 2636648
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 299272.9221607826,
+        "min": 280824,
+        "max": 525442
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 745353.5870488323,
+        "min": 712822,
+        "max": 987176
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 589799.75,
+        "min": 464809,
+        "max": 761273
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 139024.00101750102,
+        "min": 127939,
+        "max": 8759181
+      },
+      {
+        "group": "libsodium-js",
+        "name": "verify",
+        "avg": 131691.50808270677,
+        "min": 127037,
+        "max": 239207
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 118820.4285472114,
+        "min": 116388,
+        "max": 172122
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "d724ce1",
+      "message": "Update wasm-pack install and disable wasm-opt in Rust build\n\n- Use official wasm-pack installer script in CI - Remove cargo binary\ncache step - Add --no-opt to Rust build to skip wasm-opt",
+      "date": "2025-07-25T17:23:29.133Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 229748.8302011254,
+        "min": 198176,
+        "max": 813352
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 432710.1646039604,
+        "min": 391182,
+        "max": 1405988
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 158192.78852236783,
+        "min": 145877,
+        "max": 496211
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 50045.33479858759,
+        "min": 46788,
+        "max": 530476
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 152849.3100284029,
+        "min": 146348,
+        "max": 408925
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 165981.1655644776,
+        "min": 160715,
+        "max": 325397
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45861.79917197993,
+        "min": 42460,
+        "max": 1667523.0000009537
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40698.840187189235,
+        "min": 38553,
+        "max": 127000
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 110952.51065547304,
+        "min": 78970,
+        "max": 1730963
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 89995.45452124118,
+        "min": 67718,
+        "max": 1928147
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 320867.55702554743,
+        "min": 276044,
+        "max": 560453
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 746110.090425532,
+        "min": 703454,
+        "max": 1357564
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 493165.9845505618,
+        "min": 455183,
+        "max": 950503
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 142936.5312304157,
+        "min": 127392,
+        "max": 8820644
+      },
+      {
+        "group": "libsodium-js",
+        "name": "verify",
+        "avg": 134175.26772405885,
+        "min": 128804,
+        "max": 330847
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 119344.39747956404,
+        "min": 115288,
+        "max": 205930
+      }
+    ]
+  },
+  {
+    "commit": {
+      "hash": "367b4ac",
+      "message": "Disable wasm-opt in release profile for wasm-pack",
+      "date": "2025-07-25T22:08:43.501Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 229041.24482418384,
+        "min": 186951,
+        "max": 866360
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 416149.99583333335,
+        "min": 363544,
+        "max": 1690141
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 145948.87666666668,
+        "min": 128663,
+        "max": 468661
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 54441.07682678767,
+        "min": 51337,
+        "max": 317869
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 162923.2542253521,
+        "min": 156805,
+        "max": 405032
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 164489.46758717284,
+        "min": 160731.99999809265,
+        "max": 268816
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 46198.57226178359,
+        "min": 42620,
+        "max": 2036631
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 42268.6274175891,
+        "min": 38673,
+        "max": 157657
+      },
+      {
+        "group": "Rust (WASM with libsignal)",
+        "name": "createKeypair",
+        "avg": 53308.78260534033,
+        "min": 47409,
+        "max": 274997
+      },
+      {
+        "group": "Rust (WASM with libsignal)",
+        "name": "sign",
+        "avg": 103659.17176540814,
+        "min": 93476,
+        "max": 827316
+      },
+      {
+        "group": "Rust (WASM with libsignal)",
+        "name": "verify",
+        "avg": 152264.01798093587,
+        "min": 138500,
+        "max": 254659
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 102456.19656833234,
+        "min": 80973,
+        "max": 1458634
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 80493.56910858226,
+        "min": 65954,
+        "max": 3260992
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 320853.0797993616,
+        "min": 276250,
+        "max": 578428
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 729890.2445369407,
+        "min": 711729,
+        "max": 1358967
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 472160.10080645164,
+        "min": 460156,
+        "max": 860900
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 140478.85843249896,
+        "min": 128702,
+        "max": 8612614
+      },
+      {
+        "group": "libsodium-js",
+        "name": "verify",
+        "avg": 129303.89409594201,
+        "min": 125857.00000190735,
+        "max": 248218
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 117499.2403010193,
+        "min": 114766,
+        "max": 202121
+      }
+    ]
+  }
+]
