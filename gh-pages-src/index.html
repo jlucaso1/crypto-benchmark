@@ -21,6 +21,9 @@
       h2 {
         text-align: center;
       }
+      .chart-wrapper {
+        margin-bottom: 3em;
+      }
       canvas {
         max-width: 100%;
       }
@@ -30,10 +33,13 @@
     <div class="container">
       <h1>Crypto Benchmark History</h1>
       <p>
-        This chart shows the average execution time (in microseconds) for
-        different cryptographic operations across commits. Lower is better.
+        This page shows the average execution time (in microseconds) for
+        different cryptographic operations across commits, grouped by operation
+        type. Lower is better.
       </p>
-      <canvas id="benchmarkChart"></canvas>
+      <div id="chartsContainer">
+        <!-- Charts will be dynamically inserted here -->
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
