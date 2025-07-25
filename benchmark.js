@@ -2,13 +2,13 @@ import { run } from "mitata";
 import { writeFileSync } from "fs";
 import { execSync } from "child_process";
 
-// Import all benchmark files (these use mitata's bench/group directly)
 import "./bench/libsodium.js";
 import "./bench/noble.js";
 import "./bench/rust.js";
 import "./bench/zig.js";
 import "./bench/node-native-crypto.js";
 import "./bench/web-crypto.js";
+import "./bench/rust-signal.js";
 
 console.log("Running benchmarks...");
 
