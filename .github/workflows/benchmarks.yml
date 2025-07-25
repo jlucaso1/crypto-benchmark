@@ -53,18 +53,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Save bench-results.json AND the gh-pages source files to temp locations
+          # Save the new results and site source files to a temporary location
           cp bench-results.json /tmp/bench-results.json
           cp -r gh-pages-src /tmp/gh-pages-src
+
+          # Remove the untracked file that would cause a conflict during checkout.
+          rm bench-results.json
 
           # Switch to gh-pages branch, creating it if it doesn't exist
           git fetch origin gh-pages:gh-pages || true
           git switch gh-pages || git switch -c gh-pages
 
-          # Copy latest benchmark result from temp location into gh-pages branch
+          # Copy latest benchmark result from the temp location into the branch
           cp /tmp/bench-results.json ./bench-results.json
 
-          # Update history file
+          # Update the history file with the new results
           if [ -f "benchmark-history.json" ]; then
             jq -s '.[0] + [.[1]]' benchmark-history.json bench-results.json > temp_history.json && mv temp_history.json benchmark-history.json
           else
@@ -74,7 +77,7 @@ jobs:
           # Copy the NEW visualization files from the temp location
           cp -r /tmp/gh-pages-src/* .
 
-          # Commit to gh-pages branch
+          # Commit all changes to the gh-pages branch
           git add .
           git commit -m "docs: Update benchmark history and site for ${{ github.sha }}" || echo "No changes to commit on gh-pages."
           git push origin gh-pages
@@ -84,10 +87,10 @@ jobs:
 
       - name: Generate and Commit README Summary
         run: |
-          # Restore the results file from the temp location before using it.
+          # Restore the results file from the temp location before using it
           cp /tmp/bench-results.json .
 
-          # Now, run the script to update the README
+          # Run the script to update the README
           node ./.github/workflows/update-readme.js
 
           # Commit and push the updated README
