@@ -16,7 +16,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          # Fetch all history so we can get previous benchmark data
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -49,46 +48,36 @@ jobs:
       - name: Update Benchmark History and Docs
         id: update_docs
         run: |
-          # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Save bench-results.json to a temp location before switching branches
+          # Backup new files before switching branches
           cp bench-results.json /tmp/bench-results.json
+          cp -r gh-pages-src /tmp/gh-pages-src
 
-          # Switch to gh-pages branch, creating it if it doesn't exist
           git fetch origin gh-pages:gh-pages || true
           git switch gh-pages || git switch -c gh-pages
 
-          # Copy latest benchmark result from temp location into gh-pages branch
           cp /tmp/bench-results.json ./bench-results.json
 
-          # Update history file
           if [ -f "benchmark-history.json" ]; then
-            # Append new results to the existing history array
             jq -s '.[0] + [.[1]]' benchmark-history.json bench-results.json > temp_history.json && mv temp_history.json benchmark-history.json
           else
-            # Create a new history file
             jq -s '.' bench-results.json > benchmark-history.json
           fi
 
-          # Copy visualization files
-          cp -r gh-pages-src/* .
+          cp -r /tmp/gh-pages-src/* .
 
-          # Commit to gh-pages branch
-          git add benchmark-history.json index.html chart-renderer.js
-          git commit -m "docs: Update benchmark history for ${{ github.sha }}" || echo "No changes to commit on gh-pages."
+          git add .
+          git commit -m "docs: Update benchmark history and site for ${{ github.sha }}" || echo "No changes to commit on gh-pages."
           git push origin gh-pages
 
-          # Switch back to main branch to update the README
           git switch ${{ github.ref_name }}
 
       - name: Generate and Commit README Summary
         run: |
-          # Run a script to update the README
           node ./.github/workflows/update-readme.js
 
-          # Commit and push the updated README
           git add README.md
           if git diff --staged --quiet; then
             echo "No changes to commit to README."
