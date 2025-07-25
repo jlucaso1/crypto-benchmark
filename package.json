@@ -6,7 +6,7 @@
   "scripts": {
     "bench": "node ./benchmark.js",
     "build:rust": "RUSTFLAGS='-C target-feature=+simd128' wasm-pack build ./src-rust --release --target nodejs --out-dir ../pkg/rust",
-    "build:zig": "mkdir -p ./pkg/zig && zig build-exe src-zig/lib.zig -target wasm32-freestanding -O ReleaseSmall -fno-entry --export=get_buffer_ptr --export=zig_xed25519_create_keypair_ptr --export=zig_xed25519_sign_ptr --export=zig_xed25519_verify_ptr -femit-bin=./pkg/zig/benchmark.wasm",
+    "build:zig": "mkdir -p ./pkg/zig && zig build-exe src-zig/lib.zig -Dcpu_features_add=simd128 -target wasm32-freestanding -O ReleaseFast -fno-entry --export=get_buffer_ptr --export=zig_xed25519_create_keypair_ptr --export=zig_xed25519_sign_ptr --export=zig_xed25519_verify_ptr -femit-bin=./pkg/zig/benchmark.wasm -fstrip",
     "build": "npm run build:zig && npm run build:rust"
   },
   "keywords": [],

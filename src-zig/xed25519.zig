@@ -23,7 +23,7 @@ pub const XEd25519 = struct {
         0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     };
 
-    pub fn verify(
+    pub inline fn verify(
         public_key_slice: []const u8,
         msg: []const u8,
         signature_slice: []const u8,
@@ -64,7 +64,7 @@ pub const XEd25519 = struct {
         }
     }
 
-    pub fn sign(
+    pub inline fn sign(
         secret_key_slice: []const u8,
         msg: []const u8,
         noise_slice: []const u8,
