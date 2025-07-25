@@ -7,17 +7,15 @@ on:
 
 jobs:
   benchmark:
-    name: Run Benchmarks
+    name: Run, Update, and Deploy Benchmarks
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Needed to push changes to the repo
+      contents: write
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Code with Submodules
         uses: actions/checkout@v4
         with:
-          # Fetch all history so we can get previous benchmark data
-          fetch-depth: 0
           submodules: "recursive"
 
       - name: Setup Node.js
@@ -50,49 +48,41 @@ jobs:
       - name: Run Benchmarks
         run: npm run bench
 
-      - name: Update Benchmark History and Docs
-        id: update_docs
+      - name: Prepare Site for Deployment
+        id: prepare_site
         run: |
-          # Configure git
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Create a directory to hold all deployment files
+          mkdir -p gh-pages-deploy
 
-          # Save the new results and site source files to a temporary location
-          cp bench-results.json /tmp/bench-results.json
-          cp -r gh-pages-src /tmp/gh-pages-src
+          # Copy the site source files
+          cp -r gh-pages-src/* gh-pages-deploy/
 
-          # Remove the untracked file that would cause a conflict during checkout.
-          rm bench-results.json
-
-          # Switch to gh-pages branch, creating it if it doesn't exist
-          git fetch origin gh-pages:gh-pages || true
-          git switch gh-pages || git switch -c gh-pages
-
-          # Copy latest benchmark result from the temp location into the branch
-          cp /tmp/bench-results.json ./bench-results.json
-
-          # Update the history file with the new results
-          if [ -f "benchmark-history.json" ]; then
+          # Check out the existing history file from the gh-pages branch
+          # This avoids needing to fetch the full history of the main branch
+          git fetch origin gh-pages:gh-pages || echo "gh-pages branch does not exist yet"
+          if git show-ref --quiet refs/heads/gh-pages; then
+            git checkout gh-pages -- benchmark-history.json
+            # Update the history file with the new results
             jq -s '.[0] + [.[1]]' benchmark-history.json bench-results.json > temp_history.json && mv temp_history.json benchmark-history.json
+            mv benchmark-history.json gh-pages-deploy/
           else
-            jq -s '.' bench-results.json > benchmark-history.json
+            # If the history file doesn't exist, create it from the current results
+            jq -s '.' bench-results.json > gh-pages-deploy/benchmark-history.json
           fi
 
-          # Copy the NEW visualization files from the temp location
-          cp -r /tmp/gh-pages-src/* .
+          # Switch back to the main branch context
+          git checkout ${{ github.ref_name }}
 
-          # Commit all changes to the gh-pages branch
-          git add .
-          git commit -m "docs: Update benchmark history and site for ${{ github.sha }}" || echo "No changes to commit on gh-pages."
-          git push origin gh-pages
-
-          # Switch back to main branch to update the README
-          git switch ${{ github.ref_name }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages-deploy
 
       - name: Generate and Commit README Summary
         run: |
-          # Restore the results file from the temp location before using it
-          cp /tmp/bench-results.json .
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # Run the script to update the README
           node ./.github/workflows/update-readme.js
