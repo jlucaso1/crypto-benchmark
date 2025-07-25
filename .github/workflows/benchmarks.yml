@@ -24,6 +24,19 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo binaries
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/
+          key: ${{ runner.os }}-cargo-bin-cache-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack --version 0.13.1
+        if: steps.cache-cargo-bin.outputs.cache-hit != 'true'
+
       - name: Setup Zig
         run: |
           sudo apt-get update
@@ -36,9 +49,6 @@ jobs:
 
       - name: Install Binaryen (for wasm-opt)
         run: sudo apt-get install -y binaryen
-
-      - name: Install wasm-pack
-        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Install Dependencies
         run: npm install
