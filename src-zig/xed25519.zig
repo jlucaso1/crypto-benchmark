@@ -15,8 +15,6 @@ const WeakPublicKeyError = crypto.errors.WeakPublicKeyError;
 const NonCanonicalError = crypto.errors.NonCanonicalError;
 const EncodingError = crypto.errors.EncodingError;
 
-/// XEd25519 combines the X25519 key exchange protocol with the Ed25519 signature scheme.
-/// This implementation is compatible with libsignal's XEd25519.
 pub const XEd25519 = struct {
     pub const public_key_length = 32;
     pub const secret_key_length = 32;
@@ -30,14 +28,14 @@ pub const XEd25519 = struct {
         0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     };
 
-    /// Verifies an Ed25519 signature using an X25519 public key.
     pub fn verify(
-        public_key: [public_key_length]u8,
+        public_key_slice: []const u8,
         msg: []const u8,
-        signature: [signature_length]u8,
-    ) (SignatureVerificationError || IdentityElementError || WeakPublicKeyError || NonCanonicalError || EncodingError)!void {
-        // 1. Convert the X25519 (Montgomery) public key to an Ed25519 point.
-        //    This follows the libsignal-go logic.
+        signature_slice: []const u8,
+    ) !void {
+        const public_key = public_key_slice[0..public_key_length].*;
+        const signature = signature_slice[0..signature_length].*;
+
         var pk_mont = public_key;
         pk_mont[31] &= 0x7F;
 
@@ -51,14 +49,12 @@ pub const XEd25519 = struct {
         const A = try Edwards25519.fromBytes(ed_pk_bytes);
         try A.rejectIdentity();
 
-        // 2. Parse the signature components.
         var R_bytes: [32]u8 = signature[0..32].*;
         var S_bytes: [32]u8 = signature[32..64].*;
-        S_bytes[31] &= 0x7F; // Clear the sign bit from S
+        S_bytes[31] &= 0x7F;
 
         try Scalar.rejectNonCanonical(S_bytes);
 
-        // 3. Compute the challenge hash k = H(R || A || msg).
         var k_hasher = Sha512.init(.{});
         k_hasher.update(&R_bytes);
         k_hasher.update(&ed_pk_bytes);
@@ -67,23 +63,21 @@ pub const XEd25519 = struct {
         k_hasher.final(&k_hash);
         const k = Scalar.reduce64(k_hash);
 
-        // 4. Manually perform the verification equation: [S]B = R + [k]A.
-        //    This is rearranged to [S]B - [k]A = R.
-        //    This avoids decoding R_bytes into a point, bypassing the strict check.
         const R_check = try Edwards25519.basePoint.mulDoubleBasePublic(S_bytes, A.neg(), k);
 
-        // 5. Check if the resulting point matches R.
         if (!mem.eql(u8, &R_check.toBytes(), &R_bytes)) {
             return error.SignatureVerificationFailed;
         }
     }
 
-    /// Creates an Ed25519 signature using an X25519 secret key.
     pub fn sign(
-        secret_key: [secret_key_length]u8,
+        secret_key_slice: []const u8,
         msg: []const u8,
-        noise: [noise_length]u8,
+        noise_slice: []const u8,
     ) ![signature_length]u8 {
+        const secret_key = secret_key_slice[0..secret_key_length].*;
+        const noise = noise_slice[0..noise_length].*;
+
         var a = secret_key;
         Scalar.clamp(&a);
 
@@ -94,9 +88,6 @@ pub const XEd25519 = struct {
         h_nonce.update(&diversifier);
         h_nonce.update(&secret_key);
         h_nonce.update(msg);
-        // var random_bytes: [64]u8 = undefined;
-        // crypto.random.bytes(&random_bytes);
-        // h_nonce.update(&random_bytes);
         h_nonce.update(&noise);
 
         var nonce_hash: [64]u8 = undefined;
