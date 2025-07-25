@@ -1422,5 +1422,147 @@
         "max": 202121
       }
     ]
+  },
+  {
+    "commit": {
+      "hash": "fa524a3",
+      "message": "Merge branch 'master' of https://github.com/jlucaso1/crypto-benchmark",
+      "date": "2025-07-25T22:31:50.427Z"
+    },
+    "benchmarks": [
+      {
+        "group": "noble",
+        "name": "createKeypair",
+        "avg": 241042.57603048295,
+        "min": 197900,
+        "max": 1829921
+      },
+      {
+        "group": "noble",
+        "name": "sign",
+        "avg": 414518.7768545994,
+        "min": 379107,
+        "max": 1398947
+      },
+      {
+        "group": "noble",
+        "name": "edwardsToMontgomery",
+        "avg": 153745.78481848186,
+        "min": 142646,
+        "max": 702620
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 54052.75495761723,
+        "min": 50444,
+        "max": 881591
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 163221.42947813822,
+        "min": 156482,
+        "max": 441852
+      },
+      {
+        "group": "Rust (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 162320.1027950898,
+        "min": 157933.99999904633,
+        "max": 312963
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "createKeypair",
+        "avg": 45528.424927844884,
+        "min": 42369,
+        "max": 1701907.9999990463
+      },
+      {
+        "group": "Node.js native crypto",
+        "name": "sign",
+        "avg": 40071.52033175901,
+        "min": 38562,
+        "max": 138968
+      },
+      {
+        "group": "Rust (WASM with libsignal)",
+        "name": "createKeypair",
+        "avg": 53429.47923594463,
+        "min": 51285,
+        "max": 282937
+      },
+      {
+        "group": "Rust (WASM with libsignal)",
+        "name": "sign",
+        "avg": 103990.07286056253,
+        "min": 101188,
+        "max": 510251
+      },
+      {
+        "group": "Rust (WASM with libsignal)",
+        "name": "verify",
+        "avg": 152660.50858136,
+        "min": 149849,
+        "max": 256939
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "createKeypair",
+        "avg": 102897.14399519014,
+        "min": 81582,
+        "max": 1825010
+      },
+      {
+        "group": "Web Crypto API",
+        "name": "sign",
+        "avg": 80928.16785969936,
+        "min": 65883,
+        "max": 2394833
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "createKeypair",
+        "avg": 312407.8964904487,
+        "min": 276074,
+        "max": 570503
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "sign",
+        "avg": 718582.4206755373,
+        "min": 702947,
+        "max": 1360556
+      },
+      {
+        "group": "Zig (WASM with XEd25519 - Optimized)",
+        "name": "verify",
+        "avg": 456879.60598179454,
+        "min": 449986,
+        "max": 613140
+      },
+      {
+        "group": "libsodium-js",
+        "name": "createKeypair",
+        "avg": 142469.43435608433,
+        "min": 128649,
+        "max": 9481505
+      },
+      {
+        "group": "libsodium-js",
+        "name": "verify",
+        "avg": 130019.97759260495,
+        "min": 126675,
+        "max": 238844
+      },
+      {
+        "group": "libsodium-js",
+        "name": "sign",
+        "avg": 117758.46018441097,
+        "min": 114965,
+        "max": 202267
+      }
+    ]
   }
 ]
