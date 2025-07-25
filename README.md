@@ -6,25 +6,25 @@ A comprehensive benchmark suite for comparing cryptographic operations across mu
 
 <!-- BENCHMARK_START -->
 
-*Last updated: Fri, 25 Jul 2025 02:34:48 GMT for commit [`e04026d`](https://github.com/jlucaso1/crypto-benchmark/commit/e04026d)*
+*Last updated: Fri, 25 Jul 2025 02:48:22 GMT for commit [`eb29435`](https://github.com/jlucaso1/crypto-benchmark/commit/eb29435)*
 
 | Benchmark | Avg. Time per Iteration |
 |-----------|-------------------------|
-| `noble - createKeypair` | `232.11 µs` |
-| `noble - sign` | `427.30 µs` |
-| `noble - edwardsToMontgomery` | `155.01 µs` |
-| `Rust (WASM with XEd25519 - Optimized) - createKeypair` | `55.61 µs` |
-| `Rust (WASM with XEd25519 - Optimized) - sign` | `166.28 µs` |
-| `Rust (WASM with XEd25519 - Optimized) - verify` | `166.53 µs` |
-| `Node.js native crypto - createKeypair` | `48.13 µs` |
-| `Node.js native crypto - sign` | `40.28 µs` |
-| `Web Crypto API - createKeypair` | `102.04 µs` |
-| `Web Crypto API - sign` | `83.29 µs` |
-| `Zig (WASM with XEd25519 - Optimized) - createKeypair` | `451.85 µs` |
+| `noble - createKeypair` | `227.75 µs` |
+| `noble - sign` | `415.77 µs` |
+| `noble - edwardsToMontgomery` | `153.66 µs` |
+| `Rust (WASM with XEd25519 - Optimized) - createKeypair` | `53.05 µs` |
+| `Rust (WASM with XEd25519 - Optimized) - sign` | `161.49 µs` |
+| `Rust (WASM with XEd25519 - Optimized) - verify` | `162.59 µs` |
+| `Node.js native crypto - createKeypair` | `48.78 µs` |
+| `Node.js native crypto - sign` | `40.42 µs` |
+| `Web Crypto API - createKeypair` | `112.52 µs` |
+| `Web Crypto API - sign` | `87.62 µs` |
+| `Zig (WASM with XEd25519 - Optimized) - createKeypair` | `466.19 µs` |
 | `Zig (WASM with XEd25519 - Optimized) - sign` | `1.08 ms` |
-| `Zig (WASM with XEd25519 - Optimized) - verify` | `709.98 µs` |
-| `libsodium-js - createKeypair` | `142.12 µs` |
-| `libsodium-js - sign` | `52.62 µs` |
+| `Zig (WASM with XEd25519 - Optimized) - verify` | `729.19 µs` |
+| `libsodium-js - createKeypair` | `141.62 µs` |
+| `libsodium-js - sign` | `52.86 µs` |
 
 
 [**➡️ View Full Benchmark History Chart**](https://jlucaso1.github.io/crypto-benchmark/)
