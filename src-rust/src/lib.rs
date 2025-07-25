@@ -1,18 +1,8 @@
 #![no_std]
-extern crate alloc;
-use alloc::vec::Vec;
 use wasm_bindgen::prelude::*;
 use x25519_dalek::{PublicKey, StaticSecret};
 
 mod xed25519 {
-    // SPDX-FileCopyrightText: 2023 Dominik George <nik@naturalnet.de>
-    // SPDX-FileCopyrightText: 2024 Tulir Asokan
-    //
-    // SPDX-License-Identifier: Apache-2.0
-    //
-    // This file is a consolidated and simplified version of the `xeddsa` crate,
-    // vendored for use within this project to provide XEd25519 signing and verification.
-
     use curve25519_dalek::edwards::EdwardsPoint;
     use curve25519_dalek::montgomery::MontgomeryPoint;
     use curve25519_dalek::scalar::Scalar;
@@ -45,7 +35,6 @@ mod xed25519 {
     pub fn sign(private_key_bytes: &[u8; 32], message: &[u8], noise: &[u8; 64]) -> [u8; 64] {
         let (ed25519_private, ed25519_public) = calculate_key_pair(private_key_bytes, 0);
 
-        // Precomputed padding for i=1, S=32
         let padding: [u8; 32] = [
             0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
             0xff, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -93,7 +82,6 @@ mod xed25519 {
             Err(_) => return false,
         };
 
-        // Let ed25519-dalek handle the high bit of the signature internally
         let signature_dalek = match Signature::from_slice(signature) {
             Ok(s) => s,
             Err(_) => return false,
@@ -103,30 +91,25 @@ mod xed25519 {
     }
 }
 
-/// Generates a new X25519 key pair from a 32-byte seed.
 #[wasm_bindgen]
-pub fn rust_xed25519_create_keypair(seed: &[u8]) -> Vec<u8> {
-    let p_bytes: [u8; 32] = seed.try_into().expect("Seed must be 32 bytes");
+pub fn rust_xed25519_create_keypair(seed: &[u8], out: &mut [u8]) {
+    let p_bytes: [u8; 32] = seed.try_into().unwrap();
     let private_key = StaticSecret::from(p_bytes);
     let public_key = PublicKey::from(&private_key);
-    let mut keypair = Vec::with_capacity(64);
-    keypair.extend_from_slice(&private_key.to_bytes());
-    keypair.extend_from_slice(public_key.as_bytes());
-    keypair
+    out[0..32].copy_from_slice(&private_key.to_bytes());
+    out[32..64].copy_from_slice(public_key.as_bytes());
 }
 
-/// Signs a message using the XEd25519 algorithm.
 #[wasm_bindgen]
-pub fn rust_xed25519_sign(private_key_bytes: &[u8], message: &[u8], noise: &[u8]) -> Vec<u8> {
+pub fn rust_xed25519_sign(private_key_bytes: &[u8], message: &[u8], noise: &[u8], out: &mut [u8]) {
     let signature = xed25519::sign(
         private_key_bytes.try_into().unwrap(),
         message,
         noise.try_into().unwrap(),
     );
-    signature.to_vec()
+    out.copy_from_slice(&signature);
 }
 
-/// Verifies an XEd25519 signature.
 #[wasm_bindgen]
 pub fn rust_xed25519_verify(
     public_key_bytes: &[u8],
