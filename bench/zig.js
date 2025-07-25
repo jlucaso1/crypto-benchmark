@@ -8,7 +8,7 @@ async function loadWasm() {
     env: {
       panic: (messagePtr, messageLen) => {
         throw new Error(
-          `WebAssembly module panicked! (message ptr: ${messagePtr}, len: ${messageLen})`
+          `WebAssembly module panicked! (message ptr: ${messagePtr}, len: ${messageLen})`,
         );
       },
     },
@@ -46,7 +46,7 @@ exports.zig_xed25519_sign_ptr(
   PRIVATE_KEY_PTR,
   MESSAGE_PTR,
   NOISE_PTR,
-  SIGNATURE_PTR
+  SIGNATURE_PTR,
 );
 const signature = memory.slice(SIGNATURE_PTR, SIGNATURE_PTR + 64);
 
@@ -62,7 +62,7 @@ group("Zig (WASM with XEd25519 - Optimized)", () => {
       PRIVATE_KEY_PTR,
       MESSAGE_PTR,
       NOISE_PTR,
-      SIGNATURE_PTR
+      SIGNATURE_PTR,
     );
   });
 
@@ -70,7 +70,7 @@ group("Zig (WASM with XEd25519 - Optimized)", () => {
     const isValid = exports.zig_xed25519_verify_ptr(
       PUBLIC_KEY_PTR,
       MESSAGE_PTR,
-      SIGNATURE_PTR
+      SIGNATURE_PTR,
     );
   });
 });

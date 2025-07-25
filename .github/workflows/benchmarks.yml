@@ -1,0 +1,101 @@
+# .github/workflows/benchmarks.yml
+name: "Run and Compare Benchmarks"
+
+on:
+  push:
+    branches:
+      - master # Or your main branch
+
+jobs:
+  benchmark:
+    name: Run Benchmarks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to push changes to the repo
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history so we can get previous benchmark data
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Zig
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zstd
+          ZIG_VERSION="0.14.1"
+          curl -L "https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz" | tar -xJ
+          sudo mv zig-linux-x86_64-${ZIG_VERSION} /usr/local/share/zig
+          sudo ln -s /usr/local/share/zig/zig /usr/local/bin/zig
+          zig version
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Rust and Zig Artifacts
+        run: npm run build
+
+      - name: Run Benchmarks
+        run: npm run bench
+
+      - name: Update Benchmark History and Docs
+        id: update_docs
+        run: |
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Save current branch name
+          export MAIN_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+          # Switch to gh-pages branch, creating it if it doesn't exist
+          git fetch origin gh-pages:gh-pages || true
+          git switch gh-pages || git switch -c gh-pages
+
+          # Copy latest benchmark result from main branch
+          cp ../bench-results.json .
+
+          # Update history file
+          if [ -f "benchmark-history.json" ]; then
+            # Append new results to the existing history array
+            jq -s '.[0] + [.[1]]' benchmark-history.json bench-results.json > temp_history.json && mv temp_history.json benchmark-history.json
+          else
+            # Create a new history file
+            jq -s '.' bench-results.json > benchmark-history.json
+          fi
+
+          # Copy visualization files
+          cp -r ../gh-pages-src/* .
+
+          # Commit to gh-pages branch
+          git add benchmark-history.json index.html chart-renderer.js
+          git commit -m "docs: Update benchmark history for ${{ github.sha }}" || echo "No changes to commit on gh-pages."
+          git push origin gh-pages
+
+          # Switch back to main branch to update the README
+          git switch $MAIN_BRANCH
+
+      - name: Generate and Commit README Summary
+        run: |
+          # Install node dependencies for the script
+          npm install fs
+          # Run a script to update the README
+          node ./.github/workflows/update-readme.js
+
+          # Commit and push the updated README
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit to README."
+          else
+            git commit -m "docs: Update benchmark summary in README for ${{ github.sha }}"
+            git push origin HEAD
+          fi

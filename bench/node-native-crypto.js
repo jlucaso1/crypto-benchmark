@@ -1,16 +1,16 @@
-import { bench, group } from 'mitata';
-import { generateKeyPairSync, sign } from 'crypto';
+import { bench, group } from "mitata";
+import { generateKeyPairSync, sign } from "crypto";
 
 const message = Buffer.alloc(32, 1); // Node crypto often works best with Buffers
 
-group('Node.js native crypto', () => {
-  bench('createKeypair', () => {
-    generateKeyPairSync('ed25519');
+group("Node.js native crypto", () => {
+  bench("createKeypair", () => {
+    generateKeyPairSync("ed25519");
   });
 
-  const { privateKey } = generateKeyPairSync('ed25519');
+  const { privateKey } = generateKeyPairSync("ed25519");
 
-  bench('sign', () => {
+  bench("sign", () => {
     // The first argument is the hash algorithm, which is null for ed25519
     sign(null, message, privateKey);
   });

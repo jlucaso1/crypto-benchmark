@@ -1,20 +1,21 @@
-import { bench, group } from 'mitata';
-import _sodium from 'libsodium-wrappers';
+// bench/libsodium.js
+import { bench, group } from "mitata";
+import _sodium from "libsodium-wrappers";
 
 await _sodium.ready;
 const sodium = _sodium;
 
 const message = new Uint8Array(32).fill(1); // 32-byte message
 
-group('libsodium-js', () => {
-  bench('createKeypair', () => {
+group("libsodium-js", () => {
+  bench("createKeypair", () => {
     sodium.crypto_sign_keypair();
   });
 
   const keypair = sodium.crypto_sign_keypair();
   const privateKey = keypair.privateKey;
 
-  bench('sign', () => {
+  bench("sign", () => {
     sodium.crypto_sign_detached(message, privateKey);
   });
 

@@ -17,19 +17,19 @@ const signature = new Uint8Array(64);
 rust.rust_xed25519_sign(privateKey, message, noise, signature);
 
 group("Rust (WASM with XEd25519 - Optimized)", () => {
-    bench("createKeypair", () => {
-        const seedForBench = webcrypto.getRandomValues(new Uint8Array(32));
-        const keypairOut = new Uint8Array(64);
-        rust.rust_xed25519_create_keypair(seedForBench, keypairOut);
-    });
+  bench("createKeypair", () => {
+    const seedForBench = webcrypto.getRandomValues(new Uint8Array(32));
+    const keypairOut = new Uint8Array(64);
+    rust.rust_xed25519_create_keypair(seedForBench, keypairOut);
+  });
 
-    bench("sign", () => {
-        const noiseForBench = webcrypto.getRandomValues(new Uint8Array(64));
-        const signatureOut = new Uint8Array(64);
-        rust.rust_xed25519_sign(privateKey, message, noiseForBench, signatureOut);
-    });
+  bench("sign", () => {
+    const noiseForBench = webcrypto.getRandomValues(new Uint8Array(64));
+    const signatureOut = new Uint8Array(64);
+    rust.rust_xed25519_sign(privateKey, message, noiseForBench, signatureOut);
+  });
 
-    bench("verify", () => {
-        rust.rust_xed25519_verify(publicKey, message, signature);
-    });
+  bench("verify", () => {
+    rust.rust_xed25519_verify(publicKey, message, signature);
+  });
 });
