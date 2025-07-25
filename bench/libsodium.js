@@ -1,8 +1,8 @@
 import { bench, group } from 'mitata';
-import sodium from 'libsodium';
+import _sodium from 'libsodium-wrappers';
 
-// Wait for the WASM module to be ready
-await sodium.ready;
+await _sodium.ready;
+const sodium = _sodium;
 
 const message = new Uint8Array(32).fill(1); // 32-byte message
 

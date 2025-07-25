@@ -17,6 +17,7 @@
     "@noble/curves": "^1.9.4",
     "@noble/ed25519": "^2.3.0",
     "libsodium": "^0.7.15",
+    "libsodium-wrappers": "^0.7.15",
     "mitata": "^1.0.34"
   }
 }
