@@ -1,7 +1,6 @@
 #![no_std]
 extern crate alloc;
 use alloc::vec::Vec;
-use rand::{TryRngCore, rngs::OsRng};
 use wasm_bindgen::prelude::*;
 use x25519_dalek::{PublicKey, StaticSecret};
 
@@ -18,7 +17,6 @@ mod xed25519 {
     use curve25519_dalek::montgomery::MontgomeryPoint;
     use curve25519_dalek::scalar::{Scalar, clamp_integer};
     use ed25519_dalek::{Signature, Verifier, VerifyingKey};
-    use rand::TryRngCore;
     use sha2::{Digest, Sha512};
 
     struct PrivateKey([u8; 32]);
@@ -42,19 +40,16 @@ mod xed25519 {
         }
     }
 
-    pub fn sign(private_key_bytes: &[u8; 32], message: &[u8]) -> [u8; 64] {
+    pub fn sign(private_key_bytes: &[u8; 32], message: &[u8], noise: &[u8; 64]) -> [u8; 64] {
         let private_key = PrivateKey(*private_key_bytes);
         let (ed25519_private, ed25519_public) = private_key.calculate_key_pair(0);
-
-        let mut nonce = [0u8; 64];
-        rand::rngs::OsRng.try_fill_bytes(&mut nonce).unwrap();
 
         let padding: [u8; 32] = hash_i_padding(1);
         let mut hasher = Sha512::new();
         hasher.update(padding);
         hasher.update(ed25519_private);
         hasher.update(message);
-        hasher.update(nonce);
+        hasher.update(noise);
         let res: [u8; 64] = hasher.finalize().into();
 
         let res_scalar = Scalar::from_bytes_mod_order_wide(&res);
@@ -109,12 +104,10 @@ mod xed25519 {
     }
 }
 
-/// Generates a new X25519 key pair and returns it as a 64-byte array
-/// (32 bytes private key, 32 bytes public key).
+/// Generates a new X25519 key pair from a 32-byte seed.
 #[wasm_bindgen]
-pub fn rust_xed25519_create_keypair() -> Vec<u8> {
-    let mut p_bytes = [0u8; 32];
-    OsRng.try_fill_bytes(&mut p_bytes).expect("RNG failure");
+pub fn rust_xed25519_create_keypair(seed: &[u8]) -> Vec<u8> {
+    let p_bytes: [u8; 32] = seed.try_into().expect("Seed must be 32 bytes");
     let private_key = StaticSecret::from(p_bytes);
     let public_key = PublicKey::from(&private_key);
     let mut keypair = Vec::with_capacity(64);
@@ -125,8 +118,12 @@ pub fn rust_xed25519_create_keypair() -> Vec<u8> {
 
 /// Signs a message using the XEd25519 algorithm.
 #[wasm_bindgen]
-pub fn rust_xed25519_sign(private_key_bytes: &[u8], message: &[u8]) -> Vec<u8> {
-    let signature = xed25519::sign(private_key_bytes.try_into().unwrap(), message);
+pub fn rust_xed25519_sign(private_key_bytes: &[u8], message: &[u8], noise: &[u8]) -> Vec<u8> {
+    let signature = xed25519::sign(
+        private_key_bytes.try_into().unwrap(),
+        message,
+        noise.try_into().unwrap(),
+    );
     signature.to_vec()
 }
 
