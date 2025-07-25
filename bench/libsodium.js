@@ -1,4 +1,3 @@
-// bench/libsodium.js
 import { bench, group } from "mitata";
 import _sodium from "libsodium-wrappers";
 
@@ -12,13 +11,17 @@ group("libsodium-js", () => {
     sodium.crypto_sign_keypair();
   });
 
+  // Pre-generate assets to use in the sign, verify, and conversion benchmarks
   const keypair = sodium.crypto_sign_keypair();
   const privateKey = keypair.privateKey;
+  const publicKey = keypair.publicKey;
+  const signature = sodium.crypto_sign_detached(message, privateKey);
 
-  bench("sign", () => {
-    sodium.crypto_sign_detached(message, privateKey);
+  bench("verify", () => {
+    sodium.crypto_sign_verify_detached(signature, message, publicKey);
   });
 
-  // Note: We cannot benchmark XEd25519 key conversion as the required
-  // low-level functions are not exposed in libsodium-js.
+  bench("sign", () => {
+    sodium.crypto_sign_ed25519_pk_to_curve25519(publicKey);
+  });
 });
