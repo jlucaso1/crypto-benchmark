@@ -6,26 +6,26 @@ A comprehensive benchmark suite for comparing cryptographic operations across mu
 
 <!-- BENCHMARK_START -->
 
-*Last updated: Fri, 25 Jul 2025 03:37:00 GMT for commit [`9bcd99a`](https://github.com/jlucaso1/crypto-benchmark/commit/9bcd99a)*
+*Last updated: Fri, 25 Jul 2025 15:51:54 GMT for commit [`43e7241`](https://github.com/jlucaso1/crypto-benchmark/commit/43e7241)*
 
 | Benchmark | Avg. Time per Iteration |
 |-----------|-------------------------|
-| `noble - createKeypair` | `241.83 µs` |
-| `noble - sign` | `441.91 µs` |
-| `noble - edwardsToMontgomery` | `163.92 µs` |
-| `Rust (WASM with XEd25519 - Optimized) - createKeypair` | `49.36 µs` |
-| `Rust (WASM with XEd25519 - Optimized) - sign` | `148.63 µs` |
-| `Rust (WASM with XEd25519 - Optimized) - verify` | `165.66 µs` |
-| `Node.js native crypto - createKeypair` | `45.73 µs` |
-| `Node.js native crypto - sign` | `40.12 µs` |
-| `Web Crypto API - createKeypair` | `100.82 µs` |
-| `Web Crypto API - sign` | `76.49 µs` |
-| `Zig (WASM with XEd25519 - Optimized) - createKeypair` | `454.69 µs` |
-| `Zig (WASM with XEd25519 - Optimized) - sign` | `1.08 ms` |
-| `Zig (WASM with XEd25519 - Optimized) - verify` | `721.44 µs` |
-| `libsodium-js - createKeypair` | `140.07 µs` |
-| `libsodium-js - verify` | `132.15 µs` |
-| `libsodium-js - sign` | `117.18 µs` |
+| `noble - createKeypair` | `239.23 µs` |
+| `noble - sign` | `443.48 µs` |
+| `noble - edwardsToMontgomery` | `153.24 µs` |
+| `Rust (WASM with XEd25519 - Optimized) - createKeypair` | `51.27 µs` |
+| `Rust (WASM with XEd25519 - Optimized) - sign` | `115.81 µs` |
+| `Rust (WASM with XEd25519 - Optimized) - verify` | `181.26 µs` |
+| `Node.js native crypto - createKeypair` | `48.19 µs` |
+| `Node.js native crypto - sign` | `40.09 µs` |
+| `Web Crypto API - createKeypair` | `106.68 µs` |
+| `Web Crypto API - sign` | `83.21 µs` |
+| `Zig (WASM with XEd25519 - Optimized) - createKeypair` | `306.80 µs` |
+| `Zig (WASM with XEd25519 - Optimized) - sign` | `767.77 µs` |
+| `Zig (WASM with XEd25519 - Optimized) - verify` | `537.40 µs` |
+| `libsodium-js - createKeypair` | `142.30 µs` |
+| `libsodium-js - verify` | `130.49 µs` |
+| `libsodium-js - sign` | `117.44 µs` |
 
 
 [**➡️ View Full Benchmark History Chart**](https://jlucaso1.github.io/crypto-benchmark/)
