@@ -1,4 +1,3 @@
-# .github/workflows/benchmarks.yml
 name: "Run and Compare Benchmarks"
 
 on:

@@ -1,5 +1,3 @@
-/crypto-benchmark/.github / workflows / update - readme.js;
-// .github/workflows/update-readme.js
 const fs = require("fs");
 const path = require("path");
 
