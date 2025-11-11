@@ -23,15 +23,9 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Setup Zig
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y zstd
-          ZIG_VERSION="0.15.2"
-          curl -L "https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz" | tar -xJ
-          sudo mv zig-linux-x86_64-${ZIG_VERSION} /usr/local/share/zig
-          sudo ln -s /usr/local/share/zig/zig /usr/local/bin/zig
-          zig version
+      - uses: mlugg/setup-zig@v2
+        with:
+          version: 0.15.2
 
       - name: Install Binaryen (for wasm-opt)
         run: sudo apt-get install -y binaryen
